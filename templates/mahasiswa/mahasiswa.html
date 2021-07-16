@@ -1,0 +1,31 @@
+{% extends "main_layout.html" %}
+{% block title%} <title>Mahasiswa</title> {% endblock %}
+{% block content %}
+<div class="container mt-3 mb-5">
+
+    <div class="row">
+        <div class="col-lg-6"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <!-- Button trigger modal -->
+            <a type="button" class="btn btn-primary" href="/mahasiswa/tambah">Tambah Data</a>
+            <br><br>
+            <h5>Daftar Mahasiswa</h5>
+            <ul class="list-group">
+                <?php foreach ($data['mhs'] as $mhs) : ?>
+                {% for row in mhs %}
+                <li class="list-group-item">
+                    {{ row[1] }}
+                    <a href="/mahasiswa/hapus?id={{ row[0] }}" class="badge badge-danger float-right ml-1">hapus</a>
+                    <a href="/mahasiswa/edit?id={{ row[0] }}" class="badge badge-success float-right ml-1>">edit</a>
+                    <a href="/mahasiswa/detail?id={{ row[0] }}"
+                        class="badge badge-primary float-right mr-1 ml-1">detail</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
